@@ -15,7 +15,6 @@ enter() {
 
    else
        echo Too many containers found with "$1":
-       found_names=`docker ps --filter name=$1 --filter status=running --format "table {{.Image}}" | awk 'NR > 1 { print "     " $0}'`
-       echo "$found_names"
+       docker ps --filter name=$1 --filter status=running --format "table {{.Image}}" | awk 'NR > 1 { print "     " $0}'
    fi
 }
